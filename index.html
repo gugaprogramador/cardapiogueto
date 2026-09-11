@@ -1,223 +1,260 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gueto Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gueto Studio | Corte, cultura e rua</title>
+  
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    
+    /* =========================================
+       1. TOKENS E VARIÁVEIS
+       ========================================= */
+    :root {
+      --bg: #550f0f;
+      --panel: rgb(49, 1, 1);
+      --line: rgba(255, 255, 255, 0.09);
+      
+      --silver-1: #000000;
+      --silver-2: #ABABB4;
+      --silver-3: #55555D;
+      
+      --text: #000001;
+      --muted: #8C8C93;
+      
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-tag: 'Permanent Marker', cursive;
+      --font-body: 'Inter', sans-serif;
+    }
 
-  /* ---- Tokens: paleta tirada da logo (preto + prata/strass) ---- */
-  :root {
-    --bg: #0B0B0D;
-    --panel: #17171B;
-    --line: rgba(255,255,255,0.09);
-    --silver-1: #F3F3F6;
-    --silver-2: #ABABB4;
-    --silver-3: #55555D;
-    --text: #ECECEE;
-    --muted: #8C8C93;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-tag: 'Permanent Marker', cursive;
-    --font-body: 'Inter', sans-serif;
-  }
+    /* =========================================
+       2. RESET E BASE
+       ========================================= */
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
 
-  * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
 
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-  }
+    /* Classes Utilitárias */
+    .text-center { text-align: center; }
 
-  /* ---- Hero: foto real da loja + logo + CTA ---- */
-  .hero {
-    position: relative;
-    min-height: 60vh;
-    background: linear-gradient(160deg, #1c1c20, #0B0B0D 70%);
-    display: flex;
-    align-items: flex-end;
-  }
+    /* =========================================
+       3. HERO SECTION
+       ========================================= */
+    .hero {
+      position: relative;
+      min-height: 45vh;
+      /* DICA: Coloque a imagem na mesma pasta do seu projeto ou em uma subpasta /img */
+      background-image: url('img/fotoguetosite.png'); 
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: flex-end;
+    }
 
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(11,11,13,0.18) 0%, rgba(11,11,13,0.6) 55%, rgba(11,11,13,0.97) 100%);
-  }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 32px 22px 42px;
+      text-align: center;
+    }
 
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-    padding: 32px 22px 42px;
-    text-align: center;
-  }
+    .hero .logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--silver-1), var(--silver-3));
+    }
 
-  .hero .logo {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    object-fit: cover;
-    padding: 3px;
-    background: linear-gradient(135deg, var(--silver-1), var(--silver-3));
-  }
+    .hero-tag {
+      font-family: var(--font-tag);
+      font-size: 15px;
+      color: var(--silver-2);
+      margin: 12px 0 0;
+    }
 
-  .hero-tag {
-    font-family: var(--font-tag);
-    font-size: 15px;
-    color: var(--silver-2);
-    margin: 12px 0 0;
-  }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 54px;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin: 8px 0;
+      background: linear-gradient(135deg, var(--silver-1) 20%, var(--silver-3) 55%, var(--silver-1) 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-  .hero-title {
-    font-family: var(--font-display);
-    font-size: 54px;
-    line-height: 0.95;
-    letter-spacing: 0.02em;
-    margin: 8px 0 8px;
-    background: linear-gradient(135deg, var(--silver-1) 20%, var(--silver-3) 55%, var(--silver-1) 80%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 24px;
+    }
 
-  .hero-sub {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0 0 24px;
-  }
+    .btn-bebidas {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
+      padding: 13px 38px;
+      border-radius: 4px;
+      transition: filter 0.2s;
+    }
+    
+    .btn-bebidas:hover {
+      filter: brightness(1.1);
+    }
 
-  .btn-bebidas {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 14px;
-    text-decoration: none;
-    color: var(--bg);
-    background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
-    padding: 13px 38px;
-    border-radius: 4px;
-  }
+    /* =========================================
+       4. SEÇÃO IDENTIDADE
+       ========================================= */
+    .identidade {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 50px 22px;
+    }
 
-  /* ---- Identidade: a vibe da loja física ---- */
-  .identidade {
-    width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-    padding: 50px 22px;
-  }
+    .identidade h2 {
+      font-family: var(--font-display);
+      font-size: 23px;
+      letter-spacing: 0.06em;
+      color: var(--silver-2);
+      margin: 0 0 12px;
+    }
 
-  .identidade h2 {
-    font-family: var(--font-display);
-    font-size: 23px;
-    letter-spacing: 0.06em;
-    color: var(--silver-2);
-    margin: 0 0 12px;
-  }
+    .identidade p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      margin: 0 0 22px;
+    }
 
-  .identidade p {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--text);
-    margin: 0 0 22px;
-  }
+    /* =========================================
+       5. CARDÁPIO
+       ========================================= */
+    .cardapio {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 6px 22px 0;
+    }
 
-  /* ---- Cardápio de bebidas (área de compra) ---- */
-  .cardapio {
-    width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-    padding: 6px 22px 0;
-  }
+    .cardapio h2 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      letter-spacing: 0.08em;
+      color: var(--silver-2);
+      margin: 0 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
 
-  .cardapio h2 {
-    font-family: var(--font-display);
-    font-size: 19px;
-    letter-spacing: 0.08em;
-    color: var(--silver-2);
-    margin: 0 0 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--line);
-  }
+    .grade {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
 
-  .grade {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
+    @media (max-width: 380px) {
+      .grade { grid-template-columns: 1fr; }
+    }
 
-  @media (max-width: 380px) {
-    .grade { grid-template-columns: 1fr; }
-  }
+    /* Produtos */
+    .produto {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-  .produto {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+    .produto img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #000;
+    }
 
-  .produto img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    border-radius: 4px;
-    background: #000;
-  }
+    .produto h3 { 
+      font-size: 14px; 
+      font-weight: 600; 
+      line-height: 1.25; 
+    }
 
-  .produto h3 { font-size: 14px; font-weight: 600; margin: 0; line-height: 1.25; }
+    .produto .preco {
+      font-family: var(--font-display);
+      font-size: 17px;
+      letter-spacing: 0.02em;
+      color: var(--silver-1);
+    }
 
-  .produto .preco {
-    font-family: var(--font-display);
-    font-size: 17px;
-    letter-spacing: 0.02em;
-    color: var(--silver-1);
-    margin: 0;
-  }
+    .comprar {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 0;
+      cursor: pointer;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
+      transition: filter 0.2s, outline 0.2s;
+    }
 
-  .comprar {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 13px;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 0;
-    cursor: pointer;
-    color: var(--bg);
-    background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
-  }
+    .comprar:hover { 
+      filter: brightness(1.08); 
+    }
 
-  .comprar:hover { filter: brightness(1.08); }
+    .comprar:focus-visible {
+      outline: 2px solid var(--silver-1);
+      outline-offset: 2px;
+    }
 
-  .comprar:focus-visible {
-    outline: 2px solid var(--silver-1);
-    outline-offset: 2px;
-  }
-
-  footer {
-    text-align: center;
-    max-width: 340px;
-    margin: 30px auto 10px;
-    padding: 0 20px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-</style>
+    /* =========================================
+       6. FOOTER
+       ========================================= */
+    footer {
+      text-align: center;
+      max-width: 340px;
+      margin: 30px auto 10px;
+      padding: 0 20px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- CABEÇALHO -->
   <header class="hero">
     <div class="hero-content">
-      <img class="logo" src="guetto_logo.jpg" alt="Logo Gueto Studio">
+      <img class="logo" src="guetto_logo.jpg" alt="Logo circular da Gueto Studio">
       <p class="hero-tag">direto da rua</p>
       <h1 class="hero-title">GUETO<br>STUDIO</h1>
       <p class="hero-sub">Corte, cultura e rua.</p>
@@ -225,81 +262,107 @@
     </div>
   </header>
 
-  <section class="identidade">
-    <h2 style="text-align: center;">Nossa vibe</h2>
-    <p style="text-align: center;">Gueto Studio é mais que corte de cabelo. Aqui a parede é tela, o som é vinil e a rua é referência, disco e cultura de rua te fazem sentir a história do bairro antes de você sentar na cadeira.</p>
+  <!-- SOBRE / VIBE -->
+  <section class="identidade text-center">
+    <h2>Nossa vibe</h2>
+    <p>Gueto Studio é mais que corte de cabelo. Aqui a parede é tela, o som é vinil e a rua é referência. O disco e a cultura de rua te fazem sentir a história do bairro antes de você sentar na cadeira.</p>
   </section>
 
-  <section class="cardapio" id="bebidas">
-    <h2 style="text-align: center;">Bebidas</h2>
+  <!-- PRODUTOS / BEBIDAS -->
+  <main class="cardapio" id="bebidas">
+    <h2 class="text-center">Bebidas</h2>
 
     <div class="grade">
-
+      <!-- Produto 1 -->
       <article class="produto">
-        <img src="cocalata.jpg" alt="Coca-Cola Lata">
+        <img src="cocalata.jpg" alt="Lata de Coca-Cola" loading="lazy">
         <h3>Coca-Cola Lata</h3>
         <p class="preco">R$ 6,00</p>
-        <button class="comprar" onclick="comprar('Coca-Cola Lata', 6.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Coca-Cola Lata" data-preco="6.00">Comprar</button>
       </article>
 
+      <!-- Produto 2 -->
       <article class="produto">
-        <img src="cocazero.jpg" alt="Coca-Zero Lata">
+        <img src="cocazero.jpg" alt="Lata de Coca-Cola Zero" loading="lazy">
         <h3>Coca-Zero Lata</h3>
         <p class="preco">R$ 6,00</p>
-        <button class="comprar" onclick="comprar('Coca-Zero Lata', 6.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Coca-Zero Lata" data-preco="6.00">Comprar</button>
       </article>
 
+      <!-- Produto 3 -->
       <article class="produto">
-        <img src="fantalaranja.png" alt="Fanta Laranja Lata">
-        <h3>Fanta-Laranja Lata</h3>
+        <img src="fantalaranja.png" alt="Lata de Fanta Laranja" loading="lazy">
+        <h3>Fanta Laranja Lata</h3>
         <p class="preco">R$ 6,00</p>
-        <button class="comprar" onclick="comprar('Fanta Laranja Lata', 6.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Fanta Laranja Lata" data-preco="6.00">Comprar</button>
       </article>
 
+      <!-- Produto 4 -->
       <article class="produto">
-        <img src="fanta_uva_4k.jpg" alt="Fanta Uva Lata">
-        <h3>Fanta-Uva Lata</h3>
+        <img src="fanta_uva_4k.jpg" alt="Lata de Fanta Uva" loading="lazy">
+        <h3>Fanta Uva Lata</h3>
         <p class="preco">R$ 6,00</p>
-        <button class="comprar" onclick="comprar('Fanta Uva Lata', 6.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Fanta Uva Lata" data-preco="6.00">Comprar</button>
       </article>
 
+      <!-- Produto 5 -->
       <article class="produto">
-        <img src="redbul.png" alt="Red Bull Lata">
+        <img src="redbul.png" alt="Lata de Red Bull" loading="lazy">
         <h3>Red Bull Lata</h3>
         <p class="preco">R$ 10,00</p>
-        <button class="comprar" onclick="comprar('Red Bull Lata', 10.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Red Bull Lata" data-preco="10.00">Comprar</button>
       </article>
 
+      <!-- Produto 6 -->
       <article class="produto">
-        <img src="heineken.jpg" alt="Heineken">
+        <img src="heineken.jpg" alt="Garrafa de Cerveja Heineken" loading="lazy">
         <h3>Heineken</h3>
         <p class="preco">R$ 10,00</p>
-        <button class="comprar" onclick="comprar('Heineken', 10.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Heineken" data-preco="10.00">Comprar</button>
       </article>
 
+      <!-- Produto 7 -->
       <article class="produto">
-        <img src="stellaartois.jpg" alt="Stella Artois">
+        <img src="stellaartois.jpg" alt="Garrafa de Cerveja Stella Artois" loading="lazy">
         <h3>Stella Artois</h3>
         <p class="preco">R$ 10,00</p>
-        <button class="comprar" onclick="comprar('Stella Artois', 10.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Stella Artois" data-preco="10.00">Comprar</button>
       </article>
 
+      <!-- Produto 8 -->
       <article class="produto">
-        <img src="aguamineral.jpg" alt="Água Mineral">
+        <img src="aguamineral.jpg" alt="Garrafa de Água Mineral" loading="lazy">
         <h3>Água Mineral</h3>
         <p class="preco">R$ 5,00</p>
-        <button class="comprar" onclick="comprar('Agua Mineral', 5.00)">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Água Mineral" data-preco="5.00">Comprar</button>
       </article>
-
     </div>
-  </section>
+  </main>
 
-  <footer>Pagamento via Pix. Retire seu produto no frigobar assim que o pagamento for confirmado.</footer>
+  <!-- RODAPÉ -->
+  <footer>
+    Pagamento via Pix. Retire seu produto no frigobar assim que o pagamento for confirmado.
+  </footer>
 
+  <!-- SCRIPTS -->
   <script>
-    function comprar(nome, preco) {
-      alert('Em breve: aqui vai abrir o Pix de ' + nome + ' (R$ ' + preco.toFixed(2) + ')');
-    }
+    // Lógica isolada do HTML para melhor manutenção
+    document.addEventListener("DOMContentLoaded", () => {
+      const botoesComprar = document.querySelectorAll('.js-btn-comprar');
+
+      botoesComprar.forEach(botao => {
+        botao.addEventListener('click', (evento) => {
+          // Extrai os dados dos atributos data-nome e data-preco do botão clicado
+          const nomeProduto = evento.target.getAttribute('data-nome');
+          const precoProduto = parseFloat(evento.target.getAttribute('data-preco'));
+          
+          // Formata o preço para o padrão brasileiro (ex: R$ 6,00)
+          const precoFormatado = precoProduto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+          alert(`Em breve: aqui vai abrir o Pix de ${nomeProduto} (${precoFormatado})`);
+        });
+      });
+    });
   </script>
 
 </body>
