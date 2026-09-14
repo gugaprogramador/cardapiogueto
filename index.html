@@ -52,16 +52,18 @@
     /* =========================================
        3. HERO SECTION (IMAGEM + BOTÃO)
        ========================================= */
-    .hero {
-      position: relative;
-      min-height: 55vh; /* Aumentado levemente para destacar a arte de fundo */
-      background-image: url('fotoguetosite.png'); /* Nome exato da sua imagem */
-      background-size: cover;
-      background-position: center center; /* Centraliza a imagem */
-      background-repeat: no-repeat;
-      display: flex;
-      align-items: flex-end; /* Joga o conteúdo (botão) para baixo */
-    }
+  .hero {
+  position: relative;
+  min-height: 50vh;
+  background-image: url('fotoguetosite.png');
+  background-size: contain; /* Enquadra a foto inteira sem cortar */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #000; /* Preenche o fundo com o preto da arte */
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
 
     .hero-content {
       position: relative;
