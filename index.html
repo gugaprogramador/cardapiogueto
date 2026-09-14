@@ -76,17 +76,18 @@
     }
 
     .btn-bebidas {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      color: var(--bg);
-      background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
-      padding: 13px 38px;
-      border-radius: 4px;
-      transition: filter 0.2s;
-    }
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
+  padding: 13px 38px;
+  border-radius: 4px;
+  transition: filter 0.2s;
+  transform: translateY(25px); /* Ajuste este valor em px para descer mais ou menos */
+}
     
     .btn-bebidas:hover {
       filter: brightness(1.1);
@@ -224,8 +225,8 @@
 
   <!-- SOBRE / VIBE -->
   <section class="identidade text-center">
-    <h2>Nossa vibe</h2>
-    <p>Gueto Studio é mais que corte de cabelo. Aqui a parede é tela, o som é vinil e a rua é referência. O disco e a cultura de rua te fazem sentir a história do bairro antes de você sentar na cadeira.</p>
+    <h2>ATENÇÃO</h2>
+    <p>A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Ao navegar neste site ou realizar uma compra, confirma que tem a idade legal exigida por lei. Seja responsável. Beba com moderação.</p>
   </section>
 
   <!-- PRODUTOS / BEBIDAS -->
@@ -234,59 +235,45 @@
 
     <div class="grade">
       <article class="produto">
-        <img src="cocalata.jpg" alt="Lata de Coca-Cola" loading="lazy">
+        <img src="cocacola.jpg" alt="Lata de Coca-Cola" loading="lazy">
         <h3>Coca-Cola Lata</h3>
         <p class="preco">R$ 6,00</p>
         <button class="comprar js-btn-comprar" data-nome="Coca-Cola Lata" data-preco="6.00">Comprar</button>
       </article>
 
       <article class="produto">
-        <img src="cocazero.jpg" alt="Lata de Coca-Cola Zero" loading="lazy">
-        <h3>Coca-Zero Lata</h3>
-        <p class="preco">R$ 6,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Coca-Zero Lata" data-preco="6.00">Comprar</button>
+        <img src="guaracamp.png" alt="Guaracamp" loading="lazy">
+        <h3>Guaracamp</h3>
+        <p class="preco">R$ 2,50</p>
+        <button class="comprar js-btn-comprar" data-nome="Guaracamp" data-preco="2.50">Comprar</button>
       </article>
 
       <article class="produto">
-        <img src="fantalaranja.png" alt="Lata de Fanta Laranja" loading="lazy">
-        <h3>Fanta Laranja Lata</h3>
-        <p class="preco">R$ 6,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Fanta Laranja Lata" data-preco="6.00">Comprar</button>
+        <img src="corona.jpg" alt="Garrafa de cerveja Corona" loading="lazy">
+        <h3>Corona</h3>
+        <p class="preco">R$ 8,00</p>
+        <button class="comprar js-btn-comprar" data-nome="Corona" data-preco="8.00">Comprar</button>
       </article>
 
       <article class="produto">
-        <img src="fanta_uva_4k.jpg" alt="Lata de Fanta Uva" loading="lazy">
-        <h3>Fanta Uva Lata</h3>
-        <p class="preco">R$ 6,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Fanta Uva Lata" data-preco="6.00">Comprar</button>
-      </article>
-
-      <article class="produto">
-        <img src="redbul.png" alt="Lata de Red Bull" loading="lazy">
-        <h3>Red Bull Lata</h3>
-        <p class="preco">R$ 10,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Red Bull Lata" data-preco="10.00">Comprar</button>
+        <img src="spaten.jpg" alt="Garrafa de cerveja Spaten" loading="lazy">
+        <h3>Spaten</h3>
+        <p class="preco">R$ 8,00</p>
+        <button class="comprar js-btn-comprar" data-nome="Spaten" data-preco="8.00">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="heineken.jpg" alt="Garrafa de Cerveja Heineken" loading="lazy">
         <h3>Heineken</h3>
-        <p class="preco">R$ 10,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Heineken" data-preco="10.00">Comprar</button>
+        <p class="preco">R$ 8,00</p>
+        <button class="comprar js-btn-comprar" data-nome="Heineken" data-preco="8.00">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="stellaartois.jpg" alt="Garrafa de Cerveja Stella Artois" loading="lazy">
         <h3>Stella Artois</h3>
-        <p class="preco">R$ 10,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Stella Artois" data-preco="10.00">Comprar</button>
-      </article>
-
-      <article class="produto">
-        <img src="aguamineral.jpg" alt="Garrafa de Água Mineral" loading="lazy">
-        <h3>Água Mineral</h3>
-        <p class="preco">R$ 5,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Água Mineral" data-preco="5.00">Comprar</button>
+        <p class="preco">R$ 8,00</p>
+        <button class="comprar js-btn-comprar" data-nome="Stella Artois" data-preco="8.00">Comprar</button>
       </article>
     </div>
   </main>
