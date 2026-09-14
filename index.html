@@ -17,14 +17,14 @@
     :root {
       --bg: #550f0f;
       --panel: rgb(49, 1, 1);
-      --line: rgba(255, 255, 255, 0.09);
+      --line: rgba(255, 255, 255, 0.15);
       
       --silver-1: #000000;
-      --silver-2: #ABABB4;
+      --silver-2: #ffffff;
       --silver-3: #55555D;
       
-      --text: #000001;
-      --muted: #8C8C93;
+      --text: #ffffff;     /* Branco puro para leitura perfeita */
+      --muted: #d1d1d6;    /* Cinza bem claro para o rodapé */
       
       --font-display: 'Bebas Neue', sans-serif;
       --font-tag: 'Permanent Marker', cursive;
@@ -93,16 +93,17 @@
       font-weight: 700;
       font-size: 14px;
       text-decoration: none;
-      color: #ABABB4;
-      background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
+      color: #ffffff; /* Texto em branco */
+      background: #000000; /* Fundo preto para destaque */
+      border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 13px 38px;
       border-radius: 4px;
-      transition: filter 0.2s;
+      transition: background-color 0.2s;
       transform: translateY(25px); /* Desce o botão */
     }
     
     .btn-bebidas:hover {
-      filter: brightness(1.1);
+      background-color: #1a1a1a;
     }
 
     /* =========================================
@@ -117,16 +118,16 @@
 
     .identidade h2 {
       font-family: var(--font-display);
-      font-size: 23px;
+      font-size: 26px;
       letter-spacing: 0.06em;
-      color: #ABABB4;
+      color: #ffffff; /* Título em branco */
       margin: 0 0 12px;
     }
 
     .identidade p {
       font-size: 14px;
       line-height: 1.65;
-      color: #ABABB4;
+      color: #ffffff; /* Aviso legal em branco */
       margin: 0 0 22px;
     }
 
@@ -142,9 +143,9 @@
 
     .cardapio h2 {
       font-family: var(--font-display);
-      font-size: 19px;
+      font-size: 22px;
       letter-spacing: 0.08em;
-      color: #ABABB4;
+      color: #ffffff; /* Título Bebidas em branco */
       margin: 0 0 14px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--line);
@@ -182,36 +183,36 @@
       font-size: 14px; 
       font-weight: 600; 
       line-height: 1.25;
-      color: #ABABB4 
+      color: #ffffff; /* Nome do produto em branco */
     }
 
     .produto .preco {
       font-family: var(--font-display);
       font-size: 17px;
       letter-spacing: 0.02em;
-      color: #ABABB4;
+      color: #ffffff; /* Preço em branco */
     }
 
-    /*botao de comprar*/
+    /* Botão de comprar */
     .comprar {
       font-family: var(--font-body);
       font-weight: 700;
       font-size: 13px;
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 4px;
-      padding: 8px 0;
+      padding: 10px 0;
       cursor: pointer;
-      color: #ABABB4;
-      background: linear-gradient(135deg, var(--silver-1), var(--silver-2));
-      transition: filter 0.2s, outline 0.2s;
+      color: #ffffff; /* Texto "Comprar" em branco */
+      background: #000000; /* Fundo do botão em preto */
+      transition: background-color 0.2s, outline 0.2s;
     }
 
     .comprar:hover { 
-      filter: brightness(1.08); 
+      background-color: #1a1a1a; 
     }
 
     .comprar:focus-visible {
-      outline: 2px solid var(--silver-1);
+      outline: 2px solid #ffffff;
       outline-offset: 2px;
     }
 
