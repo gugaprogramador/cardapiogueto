@@ -25,7 +25,9 @@
       
       --text: #ffffff;     /* Branco puro para leitura perfeita */
       --muted: #d1d1d6;    /* Cinza bem claro para o rodapé */
-      
+
+      --sucesso: #3ecf6e;
+
       --font-display: 'Bebas Neue', sans-serif;
       --font-tag: 'Permanent Marker', cursive;
       --font-body: 'Inter', sans-serif;
@@ -100,6 +102,7 @@
       border-radius: 4px;
       transition: background-color 0.2s;
       transform: translateY(25px); /* Desce o botão */
+      cursor: pointer;
     }
     
     .btn-bebidas:hover {
@@ -216,6 +219,11 @@
       outline-offset: 2px;
     }
 
+    .comprar:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
     /* =========================================
        6. FOOTER
        ========================================= */
@@ -226,6 +234,152 @@
       padding: 0 20px 20px;
       color: var(--muted);
       font-size: 13px;
+    }
+
+    /* =========================================
+       7. MODAL DE PAGAMENTO PIX
+       ========================================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-overlay.aberto {
+      display: flex;
+    }
+
+    .modal {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px 22px 24px;
+      text-align: center;
+    }
+
+    .modal h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .modal-texto {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .modal-fechar {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .modal-fechar:hover {
+      color: #ffffff;
+    }
+
+    .modal-qr {
+      width: 190px;
+      height: 190px;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 8px;
+      margin: 0 auto 16px;
+      display: block;
+    }
+
+    .pix-copia-cola {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .pix-copia-cola input {
+      flex: 1;
+      min-width: 0;
+      background: #000000;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 9px 10px;
+      color: var(--text);
+      font-size: 11px;
+      font-family: var(--font-body);
+    }
+
+    .btn-copiar {
+      flex-shrink: 0;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      padding: 0 14px;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-copiar:hover {
+      background-color: #1a1a1a;
+    }
+
+    .modal-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .ponto-pulsando {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      animation: pulsar 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pulsar {
+      0%, 100% { opacity: 0.3; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-sucesso-icone {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--sucesso);
+      color: #061a0d;
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+
+    /* O .btn-bebidas original tem um translateY pensado só pro cabeçalho;
+       dentro do modal a gente cancela esse deslocamento. */
+    .modal .btn-bebidas {
+      transform: none;
     }
   </style>
 </head>
@@ -253,42 +407,42 @@
         <img src="cocacola.jpg" alt="Lata de Coca-Cola" loading="lazy">
         <h3>Coca-Cola</h3>
         <p class="preco">R$ 6,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Coca-Cola Lata" data-preco="6.00">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Coca-Cola Lata">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="guaracamp.png" alt="Guaracamp" loading="lazy">
         <h3>Guaracamp</h3>
         <p class="preco">R$ 2,50</p>
-        <button class="comprar js-btn-comprar" data-nome="Guaracamp" data-preco="2.50">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Guaracamp">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="corona.jpg" alt="Garrafa de cerveja Corona" loading="lazy">
         <h3>Corona</h3>
         <p class="preco">R$ 8,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Corona" data-preco="8.00">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Corona">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="spaten.jpg" alt="Garrafa de cerveja Spaten" loading="lazy">
         <h3>Spaten</h3>
         <p class="preco">R$ 8,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Spaten" data-preco="8.00">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Spaten">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="heineken.jpg" alt="Garrafa de Cerveja Heineken" loading="lazy">
         <h3>Heineken</h3>
         <p class="preco">R$ 8,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Heineken" data-preco="8.00">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Heineken">Comprar</button>
       </article>
 
       <article class="produto">
         <img src="stellaartois.jpg" alt="Garrafa de Cerveja Stella Artois" loading="lazy">
         <h3>Stella Artois</h3>
         <p class="preco">R$ 8,00</p>
-        <button class="comprar js-btn-comprar" data-nome="Stella Artois" data-preco="8.00">Comprar</button>
+        <button class="comprar js-btn-comprar" data-nome="Stella Artois">Comprar</button>
       </article>
     </div>
   </main>
@@ -298,20 +452,131 @@
     Pagamento via Pix. Retire seu produto no frigobar assim que o pagamento for confirmado.
   </footer>
 
+  <!-- MODAL DE PAGAMENTO -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal-conteudo">
+      <!-- Preenchido via JavaScript -->
+    </div>
+  </div>
+
   <!-- SCRIPTS -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const botoesComprar = document.querySelectorAll('.js-btn-comprar');
+      const modalOverlay = document.getElementById('modal-overlay');
+      const modalConteudo = document.getElementById('modal-conteudo');
 
-      botoesComprar.forEach(botao => {
-        botao.addEventListener('click', (evento) => {
-          const nomeProduto = evento.target.getAttribute('data-nome');
-          const precoProduto = parseFloat(evento.target.getAttribute('data-preco'));
-          
-          const precoFormatado = precoProduto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      let intervaloStatus = null;
 
-          alert(`Em breve: aqui vai abrir o Pix de ${nomeProduto} (${precoFormatado})`);
+      function pararPolling() {
+        if (intervaloStatus) {
+          clearInterval(intervaloStatus);
+          intervaloStatus = null;
+        }
+      }
+
+      function fecharModal() {
+        pararPolling();
+        modalOverlay.classList.remove('aberto');
+      }
+
+      function mostrarCarregando(nomeProduto) {
+        modalOverlay.classList.add('aberto');
+        modalConteudo.innerHTML = `
+          <button class="modal-fechar" data-fechar aria-label="Fechar">&times;</button>
+          <h3>${nomeProduto}</h3>
+          <p class="modal-texto">Gerando o Pix, um instante...</p>
+        `;
+      }
+
+      function mostrarErro(mensagem) {
+        modalConteudo.innerHTML = `
+          <button class="modal-fechar" data-fechar aria-label="Fechar">&times;</button>
+          <h3>Ops!</h3>
+          <p class="modal-texto">${mensagem}</p>
+        `;
+      }
+
+      function mostrarQrCode(nomeProduto, dados) {
+        modalConteudo.innerHTML = `
+          <button class="modal-fechar" data-fechar aria-label="Fechar">&times;</button>
+          <h3>${nomeProduto}</h3>
+          <img class="modal-qr" src="data:image/png;base64,${dados.qr_code_base64}" alt="QR Code do Pix">
+          <p class="modal-texto">Escaneie com o app do seu banco ou copie o código Pix abaixo</p>
+          <div class="pix-copia-cola">
+            <input type="text" readonly value="${dados.qr_code}" id="pix-input">
+            <button class="btn-copiar" id="btn-copiar" type="button">Copiar</button>
+          </div>
+          <p class="modal-status"><span class="ponto-pulsando"></span> Aguardando pagamento...</p>
+        `;
+
+        document.getElementById('btn-copiar').addEventListener('click', () => {
+          const input = document.getElementById('pix-input');
+          input.select();
+          navigator.clipboard.writeText(dados.qr_code).catch(() => {});
+          const botaoCopiar = document.getElementById('btn-copiar');
+          botaoCopiar.textContent = 'Copiado!';
+          setTimeout(() => { botaoCopiar.textContent = 'Copiar'; }, 2000);
         });
+
+        intervaloStatus = setInterval(async () => {
+          try {
+            const resposta = await fetch(`/api/status-pagamento/${dados.id}`);
+            const status = await resposta.json();
+
+            if (status.status === 'approved') {
+              pararPolling();
+              mostrarSucesso(nomeProduto);
+            } else if (status.status === 'rejected' || status.status === 'cancelled') {
+              pararPolling();
+              mostrarErro('O pagamento não foi aprovado. Feche e tente novamente.');
+            }
+          } catch (erro) {
+            console.error('Erro ao consultar status do pagamento:', erro);
+          }
+        }, 3000);
+      }
+
+      function mostrarSucesso(nomeProduto) {
+        modalConteudo.innerHTML = `
+          <div class="modal-sucesso-icone">&#10003;</div>
+          <h3>Pagamento confirmado!</h3>
+          <p class="modal-texto">A ${nomeProduto} já é sua, pode pegar no freezer. Muito obrigado!</p>
+          <button class="btn-bebidas" data-fechar type="button">Fechar</button>
+        `;
+      }
+
+      botoesComprar.forEach((botao) => {
+        botao.addEventListener('click', async (evento) => {
+          const nomeProduto = evento.currentTarget.getAttribute('data-nome');
+
+          mostrarCarregando(nomeProduto);
+
+          try {
+            const resposta = await fetch('/api/criar-pagamento', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ nome: nomeProduto }),
+            });
+
+            const dados = await resposta.json();
+
+            if (!resposta.ok) {
+              mostrarErro(dados.erro || 'Não foi possível gerar o Pix agora.');
+              return;
+            }
+
+            mostrarQrCode(nomeProduto, dados);
+          } catch (erro) {
+            mostrarErro('Não foi possível conectar com o servidor.');
+          }
+        });
+      });
+
+      modalOverlay.addEventListener('click', (evento) => {
+        if (evento.target.closest('[data-fechar]') || evento.target === modalOverlay) {
+          fecharModal();
+        }
       });
     });
   </script>
