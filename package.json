@@ -1,0 +1,7 @@
+{
+  "name": "cardapio-gueto",
+  "version": "1.0.0",
+  "dependencies": {
+    "mercadopago": "^2.0.15"
+  }
+}
